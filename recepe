@@ -1,0 +1,53 @@
+ecipe App
+
+# Initialize an empty dictionary to store recipes
+recipes = {}
+
+def add_recipe():
+    """Add a new recipe to the app."""
+    name = input("Enter the recipe name: ")
+    ingredients = input("Enter the ingredients (comma-separated): ").split(",")
+    instructions = input("Enter the cooking instructions: ")
+    recipes[name] = {"ingredients": ingredients, "instructions": instructions}
+    print(f"Recipe for {name} added successfully!")
+
+def view_recipe():
+    """View details of a specific recipe."""
+    name = input("Enter the recipe name to view: ")
+    if name in recipes:
+        print(f"Recipe for {name}:")
+        print(f"Ingredients: {', '.join(recipes[name]['ingredients'])}")
+        print(f"Instructions: {recipes[name]['instructions']}")
+    else:
+        print(f"{name} recipe not found.")
+
+def list_recipes():
+    """List all available recipes."""
+    print("Available recipes:")
+    for name in recipes:
+        print(f"- {name}")
+
+def main():
+    while True:
+        print("\nRecipe App Menu:")
+        print("1. Add a new recipe")
+        print("2. View a recipe")
+        print("3. List all recipes")
+        print("4. Exit")
+        choice = input("Enter your choice (1/2/3/4): ")
+
+        if choice == "1":
+            add_recipe()
+        elif choice == "2":
+            view_recipe()
+        elif choice == "3":
+            list_recipes()
+        elif choice == "4":
+            print("Exiting Recipe App. Bon appétit!")
+            break
+        else:
+            print("Invalid choice. Please select a valid option.")
+
+if __name__ == "__main__":
+    main()
+
